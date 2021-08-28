@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vim: ft=ruby
+
+create_table :users do |t|
+  t.string :name, null: false
+  t.timestamps
+
+  t.index :name, unique: true
+end
+
+create_table :products do |t|
+  t.string :name, null: false
+  t.string :description, null: false
+  t.integer :price, null: false
+  t.string :image_path, null: false
+  t.timestamps
+end

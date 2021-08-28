@@ -1,0 +1,19 @@
+.image {
+  width: 100%;
+}
+
+.addCartBtn {
+  padding: 8px;
+  background-color: tomato;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.product {
+  padding: 12px;
+}

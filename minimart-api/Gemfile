@@ -1,0 +1,21 @@
+source 'https://rubygems.org'
+
+gem 'graphql'
+gem 'graphql_playground-rails'
+gem 'mysql2', '~> 0.5'
+gem 'puma', '~> 5.0'
+gem 'rack-cors'
+gem 'rails', '~> 6.1.4'
+gem 'rbs_rails', require: false
+gem 'ridgepole', require: false
+gem 'steep', require: false
+
+group :development, :test do
+  gem 'rubocop', require: false
+end
+
+group :development do
+  gem 'listen', '~> 3.3'
+end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

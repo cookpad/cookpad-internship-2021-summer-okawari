@@ -1,0 +1,43 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+.list::after {
+  content: "";
+  display: block;
+  width: 30%;
+}
+
+.listItem {
+  width: 30%;
+  color: gray;
+}
+
+.imageWrapper {
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.price {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.productName {
+  margin-bottom: 12px;
+  font-size: 14px;
+}

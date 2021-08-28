@@ -1,0 +1,9 @@
+inherit_from: https://raw.githubusercontent.com/cookpad/styleguide/master/.rubocop.yml
+
+AllCops:
+  NewCops: disable
+  SuggestExtensions: false
+  Exclude:
+    - bin/*
+    - config/environments/*
+    - lib/*_pb.rb

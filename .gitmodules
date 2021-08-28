@@ -1,0 +1,3 @@
+[submodule "minimart-api/vendor/rbs/gem_rbs_collection"]
+	path = minimart-api/vendor/rbs/gem_rbs_collection
+	url = https://github.com/ruby/gem_rbs_collection.git

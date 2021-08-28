@@ -1,0 +1,8 @@
+interface _RbsRailsPathHelpers
+  def rails_info_properties_path: (*untyped) -> String
+  def rails_info_routes_path: (*untyped) -> String
+  def rails_info_path: (*untyped) -> String
+  def rails_info_properties_url: (*untyped) -> String
+  def rails_info_routes_url: (*untyped) -> String
+  def rails_info_url: (*untyped) -> String
+end

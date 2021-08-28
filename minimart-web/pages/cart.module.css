@@ -1,0 +1,55 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid lightgray;
+}
+
+.listItem {
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  position: relative;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.itemContent {
+  padding: 12px;
+}
+
+.quantityBtn {
+  margin: 0 4px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background-color: darkgrey;
+  border: none;
+  color: white;
+}
+
+.amount {
+  margin-top: 20px;
+  text-align: right;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.orderButtonWrapper {
+  margin-top: 12px;
+  padding: 0 20px;
+}
+
+.orderButton {
+  padding: 8px;
+  background-color: tomato;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  margin: 0 auto;
+}

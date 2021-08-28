@@ -1,0 +1,19 @@
+.searchForm {
+  margin: 8px;
+}
+
+.searchInput {
+  width: calc(100% - 72px);
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.searchBtn {
+  width: 60px;
+  padding: 4px;
+  box-sizing: border-box;
+}
