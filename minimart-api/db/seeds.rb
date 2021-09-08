@@ -24,16 +24,16 @@ Product.destroy_all
   )
 end
 
-# PickupLocation.destroy_all
-# PickupLocation.create!(name: "WeWork みなとみらい")
-# %w(
-#   ドコカラナイス
-#   エイトテン
-# ).each do |location_name|
-#   5.times do |i|
-#     PickupLocation.create!(name: "#{location_name}#{i}")
-#   end
-# end
+PickupLocation.destroy_all
+PickupLocation.create!(name: "WeWork みなとみらい")
+%w(
+  ドコカラナイス
+  エイトテン
+).each do |location_name|
+  5.times do |i|
+    PickupLocation.create!(name: "#{location_name}#{i}")
+  end
+end
 
 User.destroy_all
 User.create!(
