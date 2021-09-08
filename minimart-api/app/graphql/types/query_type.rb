@@ -19,6 +19,20 @@ module Types
       Product.all
     end
 
+    # name, description で検索
+    field :searchProducts, [ProductType], '商品を検索する', null: false do
+      argument :query, String, required: false
+    end
+    def searchProducts(query:)
+      if query.blank?
+        Product.all
+      else
+        Product.where('name LIKE ?', "%#{query}%").or(
+          Product.where('description LIKE ?', "%#{query}%")
+        )
+      end
+    end
+
     # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
     field :product, ProductType, '指定されたIDの商品を返す', null: true do
       argument :id, ID, required: true
