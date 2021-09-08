@@ -1,7 +1,7 @@
 module Mutations
   class UpdatePickupLocation < BaseMutation
     # 返り値のフィールドの設定
-    field :pickup_location, Types::PickupLocationType, null: true
+    field :pickup_locations, Types::PickupLocationType, null: true
 
     # 引数の設定
     argument :pickup_location_id, ID, required: true
