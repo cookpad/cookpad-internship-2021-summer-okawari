@@ -20,7 +20,7 @@ module Types
     end
 
     # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
-    field :product, [ProductType], '指定されたIDの商品を返す', null: true do
+    field :product, ProductType, '指定されたIDの商品を返す', null: true do
       argument :id, ID, required: true
     end
     def product(id:)
