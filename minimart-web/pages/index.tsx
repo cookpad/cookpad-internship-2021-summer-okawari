@@ -18,8 +18,18 @@ const TopPage: FC = () => {
   return (
     <Layout cartItemCount={cartItemCount}>
       <div className={styles.sortSelector}>
-        <button className={classes(styles.sortButton)} onClick={() => setOrderBy('id')}>新着順</button>
-        <button className={classes(styles.sortButton)} onClick={() => setOrderBy('price')}>価格の安い順</button>
+        <button
+          className={classes(styles.sortButton, orderBy === 'id' ? styles.disabledSortButton : undefined)}
+          onClick={() => setOrderBy('id')}
+          disabled={orderBy === 'id'}>
+          新着順
+        </button>
+        <button
+          className={classes(styles.sortButton, orderBy === 'price' ? styles.disabledSortButton : undefined)}
+          onClick={() => setOrderBy('price')}
+          disabled={orderBy === 'price'}>
+          価格の安い順
+        </button>
       </div>
       <ProductList products={products} />
     </Layout>
