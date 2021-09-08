@@ -3,9 +3,16 @@
 
 create_table :users do |t|
   t.string :name, null: false
+  t.integer :pickup_location_id, null: false, default: 1
   t.timestamps
 
   t.index :name, unique: true
+  t.index :pickup_location_id
+end
+
+create_table :categories do |t|
+  t.string :name, null: false
+  t.timestamps
 end
 
 create_table :products do |t|
@@ -13,5 +20,31 @@ create_table :products do |t|
   t.string :description, null: false
   t.integer :price, null: false
   t.string :image_path, null: false
+  # デフォルトのcategory_idはとりあえず1とする
+  t.integer :category_id, null: false, default: 1
   t.timestamps
+
+  t.index :category_id
+end
+
+create_table :pickup_locations do |t|
+  t.string :name, null: false
+  t.timestamps
+end
+
+create_table :order_items do |t|
+  # ここら辺のdefault1はあまりよくなさそう
+  t.integer :order_id, null: false, default: 1
+  t.integer :product_id, null: false, default: 1
+  t.integer :num, null: false, default: 1
+end
+
+create_table :orders do |t|
+  # ここら辺のdefault1はあまりよくなさそう
+  t.datetime :canceled_at, null: true
+  t.datetime :delivery_date, null: true
+  t.datetime :order_at, null: false
+  t.integer :pickup_location_id, null: false, default: 1
+  t.integer :total_amount, null: false
+  t.integer :user_id, null: false, default: 1
 end
