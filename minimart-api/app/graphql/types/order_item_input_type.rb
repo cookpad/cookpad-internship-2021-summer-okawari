@@ -1,7 +1,6 @@
 module Types
-  class OrderItemInputType < Types::BaseObject
-    field :id, ID, null: false
-    field :product_id, ID, null: false
-    field :quantity, Int, null: false
+  class OrderItemInputType < Types::BaseInputObject
+    argument :product_id, ID, required: true
+    argument :quantity, Int, required: true
   end
 end
