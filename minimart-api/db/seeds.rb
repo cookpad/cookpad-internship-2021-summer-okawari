@@ -50,3 +50,22 @@ User.create!(
   name: "toma-to",
   pickup_location_id: 1,
 )
+
+current_time = Time.current.beginning_of_day
+
+Order.create!(
+  canceled_at: current_time.advance(days: 1),
+  delivery_date: current_time.advance(days: 1),
+  order_at: current_time,
+  pickup_location_id: 1,
+  total_amount: 100,
+  user_id: 1,
+)
+
+3.times do |i|
+  OrderItem.create!(
+    order_id: 1,
+    product_id: 1,
+    num: i,
+  )
+end

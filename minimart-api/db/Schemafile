@@ -31,3 +31,20 @@ create_table :pickup_locations do |t|
   t.string :name, null: false
   t.timestamps
 end
+
+create_table :order_items do |t|
+  # ここら辺のdefault1はあまりよくなさそう
+  t.integer :order_id, null: false, default: 1
+  t.integer :product_id, null: false, default: 1
+  t.integer :num, null: false, default: 1
+end
+
+create_table :orders do |t|
+  # ここら辺のdefault1はあまりよくなさそう
+  t.datetime :canceled_at, null: false
+  t.datetime :delivery_date, null: false
+  t.datetime :order_at, null: false
+  t.integer :pickup_location_id, null: false, default: 1
+  t.integer :total_amount, null: false
+  t.integer :user_id, null: false, default: 1
+end
