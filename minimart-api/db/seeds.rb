@@ -13,6 +13,32 @@ def random_description(food)
   "#{ADVERBS.sample}#{ADJECTIVES.sample}#{food}"
 end
 
+Category.destroy_all
+Category.create!(
+  name: "野菜"
+)
+Category.create!(
+  name: "野菜以外"
+)
+OrderItem.destroy_all
+OrderItem.create!(
+  product_id: 1,
+  quantity: 10,
+  order_id: 1
+)
+OrderItem.create!(
+  product_id: 2,
+  quantity: 15,
+  order_id: 1
+)
+Order.destroy_all
+Order.create!(
+  canceled_at: DateTime.now,
+  delivery_date: DateTime.now + 1.day,
+  ordered_at: DateTime.now - 1.day,
+  pickup_location_id: 1,
+  user_id: 1
+)
 Product.destroy_all
 30.times do |i|
   food = FOOD.sample
@@ -21,22 +47,23 @@ Product.destroy_all
     description: random_description(food),
     price: 50 * (i+1),
     image_path: "/images/products/#{(i%80)+1}.jpg",
+    category_id: (i > 2 ? 2 : 1)
   )
 end
 
-# PickupLocation.destroy_all
-# PickupLocation.create!(name: "WeWork みなとみらい")
-# %w(
-#   ドコカラナイス
-#   エイトテン
-# ).each do |location_name|
-#   5.times do |i|
-#     PickupLocation.create!(name: "#{location_name}#{i}")
-#   end
-# end
+PickupLocation.destroy_all
+PickupLocation.create!(name: "WeWork みなとみらい")
+%w(
+  ドコカラナイス
+  エイトテン
+).each do |location_name|
+  5.times do |i|
+    PickupLocation.create!(name: "#{location_name}#{i}")
+  end
+end
 
 User.destroy_all
 User.create!(
   name: "toma-to",
-  # pickup_location_id: 1,
+  pickup_location_id: 1,
 )

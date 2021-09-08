@@ -1,8 +1,9 @@
 module Types
-  class UserType < Types::BaseObject
+  class OrderItemType < Types::BaseObject
     field :id, ID, null: false
-    field :name, String, null: false
-    field :pickup_location, PickupLocationType, null: false
+    field :product, ProductType, null: false
+    field :quantity, Integer, null: false
+    field :order, OrderType, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
