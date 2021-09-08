@@ -4,6 +4,7 @@ import { Product } from "../lib/product";
 import { searchProducts } from "../lib/productSearch";
 import { useCartItemCount } from "../lib/cart";
 import { Layout } from "../components/Layout";
+import { Button } from "../components/Button";
 import { ProductList } from "../components/ProductList";
 
 const SearchPage: FC = () => {
@@ -31,9 +32,11 @@ const SearchPage: FC = () => {
           value={searchKeyword}
           onChange={handleInputChange}
         />
-        <button className={styles.searchBtn} type="submit">
-          検索
-        </button>
+        <div className={styles.searchBtnWrapper} >
+          <Button type="submit">
+            検索
+          </Button>
+        </div>
       </form>
       <ProductList products={products} />
     </Layout>

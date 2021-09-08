@@ -1,19 +1,21 @@
 .searchForm {
   margin: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .searchInput {
-  width: calc(100% - 72px);
+  flex-grow: 1;
   box-sizing: border-box;
   font-size: 14px;
-  padding: 8px;
+  padding: 12px 8px;
   border: 1px solid gray;
   border-radius: 4px;
   margin-right: 12px;
 }
 
-.searchBtn {
-  width: 60px;
+.searchBtnWrapper {
+  width: 80px;
   padding: 4px;
   box-sizing: border-box;
 }
