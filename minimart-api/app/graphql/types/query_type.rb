@@ -31,5 +31,17 @@ module Types
     def pickup_locations
       PickupLocation.all
     end
+
+    field :categories, [CategoryType], 'すべてのカテゴリを返す', null: false
+    def categories
+      Category.all
+    end
+
+    field :category, [ProductType], '指定されたIDのカテゴリに属する商品を返す', null: true do
+      argument :id, ID, required: true
+    end
+    def category(id:)
+      Product.where(category_id: id)
+    end
   end
 end

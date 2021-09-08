@@ -13,6 +13,11 @@ def random_description(food)
   "#{ADVERBS.sample}#{ADJECTIVES.sample}#{food}"
 end
 
+Category.destroy_all
+Category.create!(
+  name: "野菜"
+)
+
 Product.destroy_all
 30.times do |i|
   food = FOOD.sample
@@ -21,6 +26,7 @@ Product.destroy_all
     description: random_description(food),
     price: 50 * (i+1),
     image_path: "/images/products/#{(i%80)+1}.jpg",
+    category_id: 1
   )
 end
 
@@ -38,5 +44,5 @@ end
 User.destroy_all
 User.create!(
   name: "toma-to",
-  # pickup_location_id: 1,
+  pickup_location_id: 1,
 )

@@ -7,6 +7,7 @@ module Mutations
     def resolve(pickup_location_id:)
       pickup_location = PickupLocation.find_by(id: pickup_location_id)
       context[:current_user].update(pickup_location: pickup_location)
+
       { pickup_location: pickup_location }
     end
   end
