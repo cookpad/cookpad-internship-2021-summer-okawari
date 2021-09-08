@@ -19,7 +19,7 @@ const CategoryPage: FC = () => {
   return (
     <Layout cartItemCount={cartItemCount}>
       <select className={styles.select} onChange={handleChange}>
-        <option>カテゴリから探す</option>
+        <option value="">カテゴリから探す</option>
         {categories.map((category) => (
           <option key={category.id} value={category.id}>
             {category.name}
