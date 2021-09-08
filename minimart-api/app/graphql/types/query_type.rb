@@ -53,5 +53,13 @@ module Types
     def search_products(query:)
       Product.where('name like ?', "%#{query}%").or(Product.where('description like ?', "%#{query}%"))
     end
+
+    field :order, OrderType, 'idに応じて注文を表示', null: false do
+      argument :id, ID, required: true
+    end
+    def order(id:)
+      Order.find_by(id: id)
+    end
+    
   end
 end
