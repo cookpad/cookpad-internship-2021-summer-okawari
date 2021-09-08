@@ -14,8 +14,8 @@ const listProductsQuery = `#graphql
       id
       name
       # [Hands-on] API側ができていないのでクエリできない
-      # description
-      # price
+      description
+      price
       imageUrl
     }
   }
