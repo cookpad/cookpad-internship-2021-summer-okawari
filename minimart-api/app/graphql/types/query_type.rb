@@ -27,10 +27,23 @@ module Types
       Product.find_by(id: id)
     end
 
-    
+
     field :pickup_locations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
     def pickup_locations
       PickupLocation.all
+    end
+
+    field :categories, [CategoryType], 'すべてのカテゴリを返す', null: false
+    def categories
+      Category.all
+    end
+
+    # 指定されたカテゴリIDのカテゴリを返すクエリ
+    field :category, CategoryType, '指定されたIDのカテゴリを返す', null: true do
+      argument :id, ID, required: true
+    end
+    def category(id:)
+      Category.find_by(id: id)
     end
   end
 end

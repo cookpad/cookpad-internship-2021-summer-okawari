@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+categories = ["パン","野菜","果物","お菓子","魚"]
+Category.destroy_all
+5.times do |i|
+  Category.create!(
+    name: categories[i]
+  )
+end
+
 ADVERBS = %w(とても すごく 大変 感動の 涙が出るほど)
 ADJECTIVES = %w(おいしい 旨い ハラショーな 美味な 満足できる)
 FOOD = %w(トマト きゅうり にんじん パスタ 生クリーム)
@@ -20,6 +29,7 @@ Product.destroy_all
     name: "#{food}#{i+1}",
     description: random_description(food),
     price: 50 * (i+1),
+    category_id: rand(1...6),
     image_path: "/images/products/#{(i%80)+1}.jpg",
   )
 end
