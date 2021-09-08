@@ -1,5 +1,24 @@
+.root {
+  display: inline-block;
+  width: 100%;
+}
+
+.main {
+  display: inline-block;
+  width: 100%;
+  padding-top: 64px;
+}
+
 .header {
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  z-index: 9999;
+
+  border-bottom: 1px solid gray;
+  background: white;
 }
 
 .title {

@@ -9,7 +9,7 @@ type Props = {
 
 export const Layout: FC<Props> = ({ cartItemCount, children }) => {
   return (
-    <div>
+    <div className={styles.root}>
       <Head>
         <title>Mini Mart</title>
       </Head>
@@ -35,7 +35,7 @@ export const Layout: FC<Props> = ({ cartItemCount, children }) => {
           </Link>
         </div>
       </header>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 };
