@@ -46,6 +46,14 @@ module Types
       Product.find_by(id: id)
     end
 
+    field :search_products, [ProductType], "指定されたqueryを含む商品を返す", null: true do
+      argument :query, String, required: true
+    end
+
+    def search_products(query:)
+      Product.where("name like? OR description like?", "%#{query}%", "%#{query}%")
+    end
+
     field :pickup_locations, [PickupLocationType], "すべての受け取り場所を返す", null: false
 
     def pickup_locations
