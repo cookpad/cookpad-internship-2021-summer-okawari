@@ -5,6 +5,32 @@ import { Layout } from "../../components/Layout";
 import styles from "./[id].module.css";
 import { useCartItemCount } from "../../lib/cart";
 
+const DUMMY_ORDER: Order = {
+  id: "test",
+  items: [
+    {
+      product: {
+        id: "test",
+        name: "test",
+        price: 10,
+        description: "test",
+        imageUrl: "test",
+      },
+      quantity: 10,
+    },
+  ],
+  canceledAt: "test",
+  deliveryDate: "test",
+  orderedAt: "test",
+  pickupLocation: {
+    name: "test",
+  },
+  totalAmount: 10,
+  user: {
+    name: "test",
+  },
+};
+
 const OrderPage: FC = () => {
   const { cartItemCount } = useCartItemCount();
   const [order, setOrder] = useState<Order | null>(null);
@@ -14,6 +40,7 @@ const OrderPage: FC = () => {
   useEffect(() => {
     if (id === null) return;
     getOrder(id).then((order) => setOrder(order));
+    // setOrder(DUMMY_ORDER);
   }, [id]);
 
   if (order === null) return null;
