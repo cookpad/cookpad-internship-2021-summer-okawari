@@ -2,6 +2,7 @@ import { FC } from "react";
 import { clearCart, useCartItemCount, useCartItems } from "../lib/cart";
 import styles from "./cart.module.css";
 import { Layout } from "../components/Layout";
+import { Button } from "../components/Button";
 import { useRouter } from "next/router";
 import { createOrder } from "../lib/order";
 
@@ -51,9 +52,9 @@ const CartPage: FC = () => {
       </ul>
       <div className={styles.amount}>合計: {amount}円</div>
       <div className={styles.orderButtonWrapper}>
-        <button className={styles.orderButton} onClick={handleSubmitOrder}>
+        <Button onClick={handleSubmitOrder}>
           注文する
-        </button>
+        </Button>
       </div>
     </Layout>
   );

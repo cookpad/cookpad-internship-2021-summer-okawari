@@ -19,12 +19,46 @@ module Types
       Product.all
     end
 
+    # name, description で検索
+    field :searchProducts, [ProductType], '商品を検索する', null: false do
+      argument :query, String, required: false
+    end
+    def searchProducts(query:)
+      if query.blank?
+        Product.all
+      else
+        Product.where('name LIKE ?', "%#{query}%").or(
+          Product.where('description LIKE ?', "%#{query}%")
+        )
+      end
+    end
+
     # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
     field :product, ProductType, '指定されたIDの商品を返す', null: true do
       argument :id, ID, required: true
     end
     def product(id:)
       Product.find_by(id: id)
+    end
+
+    # すべての受け取り場所を返すクエリ PickupLocations の定義
+    field :pickup_locations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
+    def pickup_locations
+      PickupLocation.all
+    end
+
+    # すべてのカテゴリを返すクエリ Categories の定義
+    field :categories, [CategoryType], 'すべてのカテゴリを返す', null: false
+    def categories
+      Category.all
+    end
+
+    # 指定されたカテゴリIDに紐づく商品を返すクエリ
+    field :category, CategoryType, 'すべてのカテゴリを返す', null: false do
+      argument :id, ID, required: true
+    end
+    def category(id:)
+      Category.find_by(id: id)
     end
   end
 end

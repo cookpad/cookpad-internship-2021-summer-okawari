@@ -12,3 +12,12 @@ a {
 img {
   vertical-align: bottom;
 }
+
+button {
+  cursor: pointer;
+  transition: filter 0.1s;
+  filter: brightness(1)
+}
+button:hover {
+  filter: brightness(1.2)
+}

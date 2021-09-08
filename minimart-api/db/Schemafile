@@ -3,9 +3,11 @@
 
 create_table :users do |t|
   t.string :name, null: false
+  t.integer :pickup_location_id, null: false, default: 1
   t.timestamps
 
   t.index :name, unique: true
+  t.index :pickup_location_id
 end
 
 create_table :products do |t|
@@ -13,5 +15,40 @@ create_table :products do |t|
   t.string :description, null: false
   t.integer :price, null: false
   t.string :image_path, null: false
+  t.integer :category_id, null: false, default: 1
   t.timestamps
+
+  t.index :category_id
+end
+
+create_table :pickup_locations do |t|
+  t.string :name, null: false
+  t.timestamps
+end
+
+create_table :categories do |t|
+  t.string :name, null: false
+  t.timestamps
+end
+
+create_table :order_items do |t|
+  t.integer :quantity, null: false
+  t.integer :product_id, null: false
+  t.integer :order_id
+  t.timestamps
+
+  t.index :product_id
+end
+
+create_table :orders do |t|
+  t.datetime :canceled_at
+  t.datetime :delivery_date, null: false
+  t.datetime :ordered_at, null: false
+  t.integer :total_amount, null: false
+  t.integer :pickup_location_id, null: false
+  t.integer :user_id, null: false
+  t.timestamps
+
+  t.index :pickup_location_id
+  t.index :user_id
 end
