@@ -3,7 +3,7 @@ import { Product } from "./product";
 
 const searchProductsQuery = `#graphql
   query searchProducts($keyword: String!) {
-    searchProducts(query: $keyword) {
+    searchProducts(keyword: $keyword) {
       id
       name
       description

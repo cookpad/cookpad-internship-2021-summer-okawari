@@ -26,5 +26,45 @@ module Types
     def product(id:)
       Product.find_by(id: id)
     end
+
+    field :pickup_locations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
+    def pickup_locations
+      PickupLocation.all
+    end
+
+    field :categories, [CategoryType], 'すべての商品カテゴリを返す', null: false
+    def categories
+      Category.all
+    end
+    
+    # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
+    field :category, CategoryType, 'ID で商品カテゴリを引く', null: true do
+      argument :id, ID, required: true
+    end
+    def category(id:)
+      Category.find_by(id: id)
+    end
+
+    # productをkeywordで曖昧検索する
+    field :search_products, [ProductType], '指定されたIDの商品を返す', null: true do
+      argument :keyword, String, required: true
+    end
+    def search_products(keyword:)
+      Product.where("name LIKE ? OR description LIKE ?", "%#{keyword}%",  "%#{keyword}%")
+    end
+
+    # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
+    field :order, OrderType, '指定されたIDのOrderを返す', null: true do
+      argument :id, ID, required: true
+    end
+    def order(id:)
+      # ゴリ押しになってしまったところ
+      order = Order.find_by(id: id)
+      # order.itemsを作る
+      order.create_items
+      # binding.irb
+      order
+    end
+
   end
 end
