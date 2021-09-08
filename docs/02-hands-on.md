@@ -278,7 +278,7 @@ end
 これを踏まえ、すべての PickupLocation を定義するクエリ (field) を記述しましょう。
 
 ```diff
-+field :pickup_locations, PickupLocationType, 'すべての受け取り場所を返す', null: false
++field :pickup_locations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
 +def pickup_locations
 +  PickupLocation.all
 +end
