@@ -9,6 +9,7 @@
 ADVERBS = %w(とても すごく 大変 感動の 涙が出るほど)
 ADJECTIVES = %w(おいしい 旨い ハラショーな 美味な 満足できる)
 FOOD = %w(トマト きゅうり にんじん パスタ 生クリーム)
+CATEGORIES = %w(野菜 果物 魚介 肉)
 def random_description(food)
   "#{ADVERBS.sample}#{ADJECTIVES.sample}#{food}"
 end
@@ -19,6 +20,7 @@ Product.destroy_all
   Product.create!(
     name: "#{food}#{i+1}",
     description: random_description(food),
+    category_id: (i%4) + 1,
     price: 50 * (i+1),
     image_path: "/images/products/#{(i%80)+1}.jpg",
   )
@@ -38,5 +40,10 @@ end
 User.destroy_all
 User.create!(
   name: "toma-to",
-  # pickup_location_id: 1,
+  pickup_location_id: 1,
 )
+
+Category.destroy_all
+CATEGORIES.each do |category_name|
+  Category.create!(name: "#{category_name}")
+end
