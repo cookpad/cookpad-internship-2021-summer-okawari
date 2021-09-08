@@ -53,5 +53,23 @@ module Types
       Product.where("name LIKE ? OR description LIKE ?", "%#{keyword}%",  "%#{keyword}%")
     end
 
+    # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
+    field :order, OrderType, '指定されたIDのOrderを返す', null: true do
+      argument :id, ID, required: true
+    end
+    def order(id:)
+      # ゴリ押しになってしまったところ
+      order = Order.find_by(id: id)
+      order_records = order.order_records
+      items = []
+      order_records.each do |record|
+        product = record.product
+        quantity = record.quantity
+        items.push({product:product, quantity: quantity})
+      end
+      order.items = items
+      order
+    end
+
   end
 end

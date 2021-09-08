@@ -30,3 +30,20 @@ create_table :categories do |t|
   t.string :name, null: false
   t.timestamps
 end
+
+create_table :orders do |t|
+  t.datetime :canceled_at, null: true
+  t.datetime :delivery_date, null: false
+  t.integer :user_id, null: false
+  t.integer :pickup_location_id, null: false
+  t.integer :total_amount, null: false
+  t.datetime :ordered_at, default: -> { 'NOW()' }, null: false
+  t.timestamps
+end
+
+create_table :order_records do |t|
+  t.integer :order_id, null: false
+  t.integer :product_id, null: false
+  t.integer :quantity, null: false
+  t.timestamps
+end
