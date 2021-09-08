@@ -46,5 +46,12 @@ module Types
     def category(id:)
       Category.find_by(id: id)
     end
+
+    field :search_products, [ProductType], 'name, descriptionでproductを検索', null: false do
+      argument :query, String, required: true
+    end
+    def search_products(query:)
+      Product.where('name like ?', "%#{query}%").or(Product.where('description like ?', "%#{query}%"))
+    end
   end
 end
