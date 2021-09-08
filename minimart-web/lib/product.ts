@@ -1,5 +1,7 @@
 import { graphqlRequest } from "./graphqlClient";
 
+export type ProductOrderBy = 'id' | 'price'
+
 export type Product = {
   id: string;
   name: string;
@@ -13,17 +15,33 @@ const listProductsQuery = `#graphql
     products {
       id
       name
-      # [Hands-on] API側ができていないのでクエリできない
-      # description
-      # price
+      description
+      price
       imageUrl
     }
   }
 `;
 
-export async function listProducts(): Promise<Product[]> {
-  const data = await graphqlRequest({ query: listProductsQuery });
-  return data.products;
+const listCheapestOrderedProductsQuery = `#graphql
+  query listCheapestOrderedProducts {
+    cheapestOrderedProducts {
+      id
+      name
+      description
+      price
+      imageUrl
+    }
+  }
+`
+
+export async function listProducts(orderBy: ProductOrderBy): Promise<Product[]> {
+  if (orderBy === 'price') {
+    const data = await graphqlRequest({ query: listCheapestOrderedProductsQuery });
+    return data.cheapestOrderedProducts
+  } else {
+    const data = await graphqlRequest({ query: listProductsQuery });
+    return data.products
+  }
 }
 
 const getProductQuery = `#graphql
@@ -31,9 +49,8 @@ const getProductQuery = `#graphql
     product(id: $id) {
       id
       name
-      # [Hands-on] API側ができていないのでクエリできない
-      # description
-      # price
+      description
+      price
       imageUrl
     }
   }

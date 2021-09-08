@@ -9,7 +9,7 @@ type Props = {
 
 export const Layout: FC<Props> = ({ cartItemCount, children }) => {
   return (
-    <div>
+    <div className={styles.root}>
       <Head>
         <title>Mini Mart</title>
       </Head>
@@ -19,14 +19,14 @@ export const Layout: FC<Props> = ({ cartItemCount, children }) => {
         </h1>
         <div className={styles.menu}>
           {/* [発展課題C] */}
-          {/* <Link href="/category">🥕</Link>
-          <span> | </span> */}
+          <Link href="/category">🥕</Link>
+          <span> | </span>
           {/* [発展課題S] */}
-          {/* <Link href="/search">🔎</Link>
-          <span> | </span> */}
+          <Link href="/search">🔎</Link>
+          <span> | </span>
           {/* [基本課題] */}
-          {/* <Link href="/user">⚙️</Link>
-          <span> | </span> */}
+          <Link href="/user">⚙️</Link>
+          <span> | </span>
           <Link href="/cart">
             <a>
               <span>🛒</span>
@@ -35,7 +35,7 @@ export const Layout: FC<Props> = ({ cartItemCount, children }) => {
           </Link>
         </div>
       </header>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 };
