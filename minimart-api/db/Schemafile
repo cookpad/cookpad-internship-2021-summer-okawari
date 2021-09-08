@@ -33,7 +33,7 @@ end
 
 create_table :orders do |t|
   t.datetime :canceled_at, null: true
-  t.datetime :delivery_date, null: false
+  t.datetime :delivery_date, default: -> { 'NOW()' }, null: false
   t.integer :user_id, null: false
   t.integer :pickup_location_id, null: false
   t.integer :total_amount, null: false
