@@ -27,8 +27,8 @@ module Types
       Product.find_by(id: id)
     end
 
-    field :pickup_locations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
-    def pickup_locations
+    field :pickupLocations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
+    def pickupLocations
       PickupLocation.all
     end
 
@@ -44,13 +44,13 @@ module Types
       Product.where(category_id: id)
     end
 
-    field :search, [ProductType], '入力された検索ワードに関連のある商品を返す', null: true do
-      argument :keyword, String, required: true
+    field :searchProducts, [ProductType], '入力された検索ワードに関連のある商品を返す', null: true do
+      argument :query, String, required: true
     end
-    def search(keyword:)
+    def searchProducts(query:)
       Product
-        .where('description like ?', "%#{keyword}%")
-        .or(Product.where('name like ?', "%#{keyword}%"))
+        .where('description like ?', "%#{query}%")
+        .or(Product.where('name like ?', "%#{query}%"))
     end
   end
 end

@@ -31,7 +31,7 @@ const SearchPage: FC = () => {
           value={searchKeyword}
           onChange={handleInputChange}
         />
-        <button className={styles.searchBtn} type="submit">
+        <button onClick={() => searchProducts(searchKeyword)} className={styles.searchBtn} type="submit">
           検索
         </button>
       </form>
