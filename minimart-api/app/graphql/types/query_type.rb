@@ -26,5 +26,11 @@ module Types
     def product(id:)
       Product.find_by(id: id)
     end
+
+    # すべてのPickupLocationを定義するクエリ pickup locationsの定義
+    field :pickup_locations, [PickupLocationType], 'すべての受け取り場所を返す', null: false
+    def pickup_locations
+      PickupLocation.all
+    end
   end
 end
