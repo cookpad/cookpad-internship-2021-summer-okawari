@@ -19,8 +19,8 @@ export const Layout: FC<Props> = ({ cartItemCount, children }) => {
         </h1>
         <div className={styles.menu}>
           {/* [発展課題C] */}
-          {/* <Link href="/category">🥕</Link>
-          <span> | </span> */}
+          <Link href="/category">🥕</Link>
+          <span> | </span>
           {/* [発展課題S] */}
           {/* <Link href="/search">🔎</Link>
           <span> | </span> */}
