@@ -1,0 +1,3 @@
+class PickupLocation < ApplicationRecord
+end
+
