@@ -41,4 +41,30 @@ query searchProducts($keyword: String!) {
       imageUrl
     }
   }
+
+query getOrder($id: ID!) {
+    order(id: $id) {
+      id
+      items {
+        product {
+          id
+          name
+          description
+          price
+          imageUrl
+        }
+        quantity
+      }
+      canceledAt
+      deliveryDate
+      orderedAt
+      pickupLocation {
+        name
+      }
+      totalAmount
+      user {
+        name
+      }
+    }
+  }
 ```

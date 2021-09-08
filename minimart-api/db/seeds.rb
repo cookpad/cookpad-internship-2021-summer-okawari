@@ -20,7 +20,25 @@ Category.create!(
 Category.create!(
   name: "野菜以外"
 )
-
+OrderItem.destroy_all
+OrderItem.create!(
+  product_id: 1,
+  quantity: 10,
+  order_id: 1
+)
+OrderItem.create!(
+  product_id: 2,
+  quantity: 15,
+  order_id: 1
+)
+Order.destroy_all
+Order.create!(
+  canceled_at: DateTime.now,
+  delivery_date: DateTime.now + 1.day,
+  ordered_at: DateTime.now - 1.day,
+  pickup_location_id: 1,
+  user_id: 1
+)
 Product.destroy_all
 30.times do |i|
   food = FOOD.sample
