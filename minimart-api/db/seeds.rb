@@ -19,7 +19,7 @@ Category.create!(
 )
 
 Product.destroy_all
-30.times do |i|
+120.times do |i|
   food = FOOD.sample
   Product.create!(
     name: "#{food}#{i+1}",

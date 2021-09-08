@@ -14,9 +14,14 @@ module Types
     end
 
     # すべての商品を返すクエリ Products の定義
-    field :products, [ProductType], 'すべての商品を返す', null: false
+    field :products, [ProductType], 'すべての商品を返す（新着順）', null: false
     def products
-      Product.all
+      Product.order(id: :desc)
+    end
+
+    field :cheapestOrderedProducts, [ProductType], 'すべての商品を返す（価格の安い順）', null: false
+    def cheapestOrderedProducts
+      Product.order(price: :asc)
     end
 
     # 指定されたIDの商品を返すクエリ Product(id: ID!) の定義
