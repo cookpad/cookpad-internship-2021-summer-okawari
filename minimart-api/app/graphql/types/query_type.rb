@@ -41,10 +41,10 @@ module Types
 
     # category(id)の定義
     field :category, CategoryType, 'idで商品カテゴリを返す', null: false do
-      argument :category_id, ID, required: true
+      argument :id, ID, required: true
     end
-    def category(category_id:)
-      Category.find_by(id: category_id)
+    def category(id:)
+      Category.find_by(id: id)
     end
   end
 end
