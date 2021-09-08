@@ -60,14 +60,9 @@ module Types
     def order(id:)
       # ゴリ押しになってしまったところ
       order = Order.find_by(id: id)
-      order_records = order.order_records
-      items = []
-      order_records.each do |record|
-        product = record.product
-        quantity = record.quantity
-        items.push({product:product, quantity: quantity})
-      end
-      order.items = items
+      # order.itemsを作る
+      order.create_items
+      # binding.irb
       order
     end
 
