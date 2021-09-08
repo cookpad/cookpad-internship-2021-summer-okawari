@@ -13,9 +13,9 @@ const listProductsQuery = `#graphql
     products {
       id
       name
-      # [Hands-on] API側ができていないのでクエリできない
-      # description
-      # price
+      # DONE -> [Hands-on] API側ができていないのでクエリできない
+      description
+      price
       imageUrl
     }
   }
@@ -31,9 +31,9 @@ const getProductQuery = `#graphql
     product(id: $id) {
       id
       name
-      # [Hands-on] API側ができていないのでクエリできない
-      # description
-      # price
+      # DONE -> [Hands-on] API側ができていないのでクエリできない
+      description
+      price
       imageUrl
     }
   }

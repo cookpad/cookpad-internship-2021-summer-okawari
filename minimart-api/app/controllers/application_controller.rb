@@ -13,6 +13,9 @@ class ApplicationController < ActionController::API
   def set_or_create_current_user
     username = request.headers['X-User-Name']
     return if username.blank?
-    @current_user = User.find_or_create_by!(name: username[0, 255])
+
+    @current_user = User.find_or_create_by!(name: username[0, 255]) do |user|
+      user.pickup_location = PickupLocation.first
+    end
   end
 end
