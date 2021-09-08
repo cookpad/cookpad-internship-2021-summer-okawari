@@ -3,15 +3,25 @@
 
 create_table :users do |t|
   t.string :name, null: false
+  t.integer :pickup_location_id, null: false, default: 1
   t.timestamps
 
   t.index :name, unique: true
+  t.index :pickup_location_id
 end
 
 create_table :products do |t|
   t.string :name, null: false
   t.string :description, null: false
   t.integer :price, null: false
+  t.integer :category_id, null: false, default: 1
   t.string :image_path, null: false
   t.timestamps
+end
+create_table :pickup_locations do |t|
+  t.string :name, null: false
+  t.timestamps
+end
+create_table :categories do |t|
+  t.string :name, null: false
 end
