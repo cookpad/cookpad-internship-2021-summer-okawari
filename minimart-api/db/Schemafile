@@ -30,3 +30,23 @@ create_table :categories do |t|
   t.string :name, null: false
   t.timestamps
 end
+
+create_table :orders do |t|
+  t.integer :user_id, null: false
+  t.datetime :canceled_at
+  t.datetime :delivery_date, null: false
+  t.datetime :ordered_at, null: false 
+  t.integer :pickup_location_id, null: false
+
+  t.index :user_id
+  t.index :pickup_location_id
+end
+
+create_table :order_items do |t|
+  t.integer :order_id, null: false
+  t.integer :product_id, null: false
+  t.integer :quantity, null: false
+  t.index :order_id
+  t.index :product_id
+end
+
