@@ -8,6 +8,7 @@ module Types
     def image_url
       "http://localhost:3001#{object.image_path}"
     end
+    field :category, CategoryType, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
