@@ -43,5 +43,14 @@ module Types
     def category(id:)
       Product.where(category_id: id)
     end
+
+    field :search, [ProductType], '入力された検索ワードに関連のある商品を返す', null: true do
+      argument :keyword, String, required: true
+    end
+    def search(keyword:)
+      Product
+        .where('description like ?', "%#{keyword}%")
+        .or(Product.where('name like ?', "%#{keyword}%"))
+    end
   end
 end
