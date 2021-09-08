@@ -13,30 +13,39 @@ def random_description(food)
   "#{ADVERBS.sample}#{ADJECTIVES.sample}#{food}"
 end
 
+CATEGORY = %w(やわらかい かたい すごくかたい)
+
+Category.destroy_all
+Category.create!(name: "category1")
+Category.create!(name: "category2")
+
+
 Product.destroy_all
 30.times do |i|
   food = FOOD.sample
   Product.create!(
     name: "#{food}#{i+1}",
     description: random_description(food),
+    category_id: 2,
     price: 50 * (i+1),
     image_path: "/images/products/#{(i%80)+1}.jpg",
   )
 end
 
-# PickupLocation.destroy_all
-# PickupLocation.create!(name: "WeWork みなとみらい")
-# %w(
-#   ドコカラナイス
-#   エイトテン
-# ).each do |location_name|
-#   5.times do |i|
-#     PickupLocation.create!(name: "#{location_name}#{i}")
-#   end
-# end
+
+PickupLocation.destroy_all
+PickupLocation.create!(name: "WeWork みなとみらい")
+%w(
+   ドコカラナイス
+   エイトテン
+ ).each do |location_name|
+  5.times do |i|
+     PickupLocation.create!(name: "#{location_name}#{i}")
+   end
+end
 
 User.destroy_all
 User.create!(
   name: "toma-to",
-  # pickup_location_id: 1,
+  pickup_location_id: 1,
 )
