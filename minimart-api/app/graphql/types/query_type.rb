@@ -45,5 +45,13 @@ module Types
       Category.find_by(id: id)
     end
 
+    # productをkeywordで曖昧検索する
+    field :search_products, [ProductType], '指定されたIDの商品を返す', null: true do
+      argument :keyword, String, required: true
+    end
+    def search_products(keyword:)
+      Product.where("name LIKE ? OR description LIKE ?", "%#{keyword}%",  "%#{keyword}%")
+    end
+
   end
 end
