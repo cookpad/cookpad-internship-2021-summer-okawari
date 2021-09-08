@@ -37,11 +37,11 @@ module Types
       Category.all
     end
 
-    field :category, [ProductType], '指定されたIDのカテゴリに属する商品を返す', null: true do
+    field :category, CategoryProductsType, '指定されたIDのカテゴリに属する商品を返す', null: true do
       argument :id, ID, required: true
     end
     def category(id:)
-      Product.where(category_id: id)
+      { products: Product.where(category_id: id) }
     end
 
     field :searchProducts, [ProductType], '入力された検索ワードに関連のある商品を返す', null: true do
