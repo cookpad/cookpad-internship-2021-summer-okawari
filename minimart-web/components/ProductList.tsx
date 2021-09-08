@@ -19,6 +19,8 @@ export const ProductList: FC<Props> = ({ products }) => {
                 <div className={styles.price}>{product.price}円</div>
               </div>
               <div className={styles.productName}>{product.name}</div>
+              <div className={styles.productName}>{product.description}</div>
+
             </a>
           </Link>
         </li>
